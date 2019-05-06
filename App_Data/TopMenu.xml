@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item Text="Trang chủ" NavigateUrl="Default.aspx" />
+  <item Text="Hệ thống" NavigateUrl="hethong.aspx"  />
+  <item Text="Học viên" NavigateUrl="hocvien.aspx"  />
+  <item Text="Thu học phí" NavigateUrl="dangky.aspx"  />
+  <item Text="Khóa học" NavigateUrl="khoahoc.aspx"  />
+  <item Text="Thống kê" NavigateUrl="thongke.aspx"  />
+</items>

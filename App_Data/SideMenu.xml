@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <group Text="Hệ thống">
+    <item Text="Đổi mật khẩu" />
+    <item Text="Quản lý người dùng" />
+    <item Text="Phân quyền" />
+  </group>
+  <group Text="Danh mục">
+    <item Text="Cơ sở đào tạo" />
+    <item Text="Chi phí" />
+    <item Text="Giảng viên" />
+  </group>
+  <group Text="Học viên">
+    <item Text="Cập nhật" NavigateUrl="hocvien.aspx"  />
+    <item Text="Đăng ký" NavigateUrl="dangky.aspx"  />
+  </group>
+  <group Text="Khóa học">
+    <item Text="Tạo mới" NavigateUrl="khoahoc.aspx"/>
+    <item Text="Đăng ký" />
+  </group>
+</menu>
