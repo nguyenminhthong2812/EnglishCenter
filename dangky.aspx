@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="dangky.aspx.cs" Inherits="dangky" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
- 
+    
     <table style="width:100%;">
         <tr>
             <td style="width: 2px">&nbsp;</td>
@@ -37,13 +41,14 @@
         </tr>
         <tr>
             <td style="width: 2px">&nbsp;</td>
+            
             <td style="vertical-align:text-top;vertical-align:top"> 
-<dx:ASPxGridView ID="ASPxGridView_khoahoc" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource_khoahoc" ClientInstanceName="ASPxGridView_khoahoc" Width="100%" KeyFieldName="_id" EnableCallBacks="False" OnRowCommand="ASPxGridView_khoahoc_RowCommand" OnSelectionChanged="ASPxGridView_khoahoc_SelectionChanged">
+<dx:ASPxGridView ID="ASPxGridView_khoahoc" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource_khoahoc" ClientInstanceName="ASPxGridView_khoahoc" Width="100%" KeyFieldName="_id" EnableCallBacks="False"  OnSelectionChanged="ASPxGridView_khoahoc_SelectionChanged">
  
     <SettingsPager PageSize="32" />
     <SettingsEditing Mode="Inline">
     </SettingsEditing>
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350" AutoFilterCondition="Contains" ShowFilterRow="True" ShowFooter="True" />
+    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350"  ShowFilterRow="True" ShowFooter="True" />
     
     <Paddings Padding="0px" />
     <Border BorderWidth="0px" />
@@ -51,9 +56,9 @@
     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
     <SettingsBehavior AllowSelectByRowClick="True" AllowSelectSingleRowOnly="True"   />
     <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
-    <SettingsSearchPanel Visible="True" />
+    <%--<SettingsSearchPanel Visible="True" />
     <EditFormLayoutProperties ColCount="5">
-    </EditFormLayoutProperties>
+    </EditFormLayoutProperties>--%>
     <Columns>
         <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" SelectAllCheckboxMode="Page"   Width="30px" ShowSelectCheckbox="True">
         </dx:GridViewCommandColumn>
@@ -91,7 +96,7 @@
     <SettingsPager PageSize="32" />
     <SettingsEditing Mode="Inline">
     </SettingsEditing>
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="250" AutoFilterCondition="Contains" ShowFilterRow="True" />
+    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="250"  ShowFilterRow="True" />
     
     <Paddings Padding="0px" />
     <Border BorderWidth="0px" />
@@ -99,9 +104,9 @@
     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
     <SettingsBehavior ConfirmDelete="True" AllowSelectByRowClick="True" AllowSelectSingleRowOnly="True" />
     <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
-    <SettingsSearchPanel Visible="True" />
+    <%--<SettingsSearchPanel Visible="True" />
     <EditFormLayoutProperties ColCount="5">
-    </EditFormLayoutProperties>
+    </EditFormLayoutProperties>--%>
     <Columns>
         <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" SelectAllCheckboxMode="Page"   Width="30px" ShowSelectCheckbox="True"> 
         </dx:GridViewCommandColumn>
@@ -148,15 +153,15 @@
      <SettingsPager PageSize="32" />
     <SettingsEditing Mode="Inline">
     </SettingsEditing>
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350" AutoFilterCondition="Contains" ShowFilterRow="True" />
+    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350"  ShowFilterRow="True" />
      
     <Paddings Padding="0px" />
     <Border BorderWidth="0px" />
     <BorderBottom BorderWidth="1px" /> 
     <SettingsBehavior ConfirmDelete="True" />
-    <SettingsSearchPanel Visible="True" />
+    <%--<SettingsSearchPanel Visible="True" />
     <EditFormLayoutProperties ColCount="5">
-    </EditFormLayoutProperties>
+    </EditFormLayoutProperties>--%>
     <Columns>
         <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" SelectAllCheckboxMode="Page"
              ShowEditButton="True" ShowNewButtonInHeader="True" ShowDeleteButton="True" Width="100px"> 

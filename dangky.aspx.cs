@@ -15,8 +15,5 @@ public partial class dangky : System.Web.UI.Page
     {
        //ASPxTextBox_hocphi.Text = ASPxGridView_khoahoc.GetSelectedFieldValues("_hocphi")[0].ToString(); 
     }
-    protected void ASPxGridView_khoahoc_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
-    {
-
-    }
+    
 }

@@ -1,5 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Root.master.cs" Inherits="RootMaster" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxSplitter" TagPrefix="dx" %>
+
 <%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,6 +18,7 @@
 </head>
 <body runat="server" id="Body">
     <form id="form1" runat="server">
+        
     <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" AllowResize="False" Orientation="Vertical"
         FullscreenMode="True" SeparatorVisible="False" Height="100%" Width="100%">
         <Styles>

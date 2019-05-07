@@ -1,5 +1,7 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Light.master" CodeFile="ChangePassword.aspx.cs" Inherits="ChangePassword" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <div class="accountHeader">
  
@@ -7,7 +9,7 @@
     <p>Use the form below to change your password.</p>
     <p>New passwords are required to be a minimum of <%= Membership.MinRequiredPasswordLength %> characters in length.</p>
 </div>
-
+    
 <dx:ASPxTextBox ID="tbCurrentPassword" runat="server" Caption="Old Password" Password="true" Width="200px">
     <CaptionSettings Position="Top" />
     <ValidationSettings ValidationGroup="ChangeUserPasswordValidationGroup">

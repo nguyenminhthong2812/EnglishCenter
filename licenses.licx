@@ -1,4 +1,10 @@
-DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+DevExpress.Patch.InMemoryPatch, DevExpress.Patch.Common, Version=6.2.0.0, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
+DevExpress.Web.ASPxEditors.ASPxTextBox, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Web.ASPxGridView.ASPxGridView, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Web.ASPxNavBar.ASPxNavBar, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Web.ASPxEditors.ASPxLabel, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Web.ASPxMenu.ASPxMenu, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Web.ASPxSplitter.ASPxSplitter, DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.Web.ASPxButton, DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.Web.ASPxTextBox, DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.Web.ASPxGridView, DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

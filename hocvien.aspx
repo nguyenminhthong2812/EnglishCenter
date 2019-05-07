@@ -1,22 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="hocvien.aspx.cs" Inherits="hocvien" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    
         <%-- DXCOMMENT: Configure ASPxGridView control --%>
 <dx:ASPxGridView ID="ASPxGridView_hocvien" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource_hocvien" ClientInstanceName="ASPxGridView_hocvien" Width="100%" KeyFieldName="_id">
     <SettingsPager PageSize="32" />
     <SettingsEditing Mode="Inline">
     </SettingsEditing>
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350" AutoFilterCondition="Contains" ShowFilterRow="True" />
+    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350"  ShowFilterRow="True" />
     
     <Paddings Padding="0px" />
     <Border BorderWidth="0px" />
     <BorderBottom BorderWidth="1px" />
     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
     <SettingsBehavior ConfirmDelete="True" />
-    <SettingsSearchPanel Visible="True" />
+    <%--<SettingsSearchPanel Visible="True" />
     <EditFormLayoutProperties ColCount="5">
-    </EditFormLayoutProperties>
+    </EditFormLayoutProperties>--%>
     <Columns>
         <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" SelectAllCheckboxMode="Page"
              ShowEditButton="True" ShowNewButtonInHeader="True" ShowDeleteButton="True" Width="100px"> 

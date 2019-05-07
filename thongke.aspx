@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="thongke.aspx.cs" Inherits="thongke" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <br /><br /><br />
+    
         <%-- DXCOMMENT: Configure ASPxGridView control --%>
-<dx:ASPxGridView ID="ASPxGridView_thongke" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource_thongke" ClientInstanceName="ASPxGridView_khoahoc" Width="100%">
+<dx:ASPxGridView ID="ASPxGridView_thongke" runat="server" AutoGenerateColumns="False"  ClientInstanceName="ASPxGridView_khoahoc" Width="100%">
+    <%--DataSourceID="SqlDataSource_thongke"--%>
     <SettingsPager PageSize="32" />
     <SettingsEditing Mode="Inline">
     </SettingsEditing>
-    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350" AutoFilterCondition="Contains" ShowFilterRow="True" ShowFooter="True" />
+    <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="350"  ShowFilterRow="True" ShowFooter="True" />
     <GroupSummary>
         <dx:ASPxSummaryItem FieldName="_id" SummaryType="Count" />
     </GroupSummary>
@@ -16,9 +20,9 @@
     <BorderBottom BorderWidth="1px" />
     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
     <SettingsBehavior AllowSelectByRowClick="True" ConfirmDelete="True" />
-    <SettingsSearchPanel Visible="True" />
+    <%--<SettingsSearchPanel Visible="True" />
     <EditFormLayoutProperties ColCount="5">
-    </EditFormLayoutProperties>
+    </EditFormLayoutProperties>--%>
     <Columns>
         <dx:GridViewDataTextColumn VisibleIndex="0" FieldName="_makh" Caption="Mã số">
         </dx:GridViewDataTextColumn>
@@ -49,10 +53,10 @@
 
 
 <%-- DXCOMMENT: Configure your datasource for ASPxGridView --%>
-<asp:SqlDataSource ID="SqlDataSource_thongke" runat="server"
+<%--<asp:SqlDataSource ID="SqlDataSource_thongke" runat="server"
         ConnectionString="<%$ ConnectionStrings:trungtamngoainguConnectionString %>" 
         SelectCommand="dothongkekhoahoc" SelectCommandType="StoredProcedure">
-</asp:SqlDataSource>
+</asp:SqlDataSource>--%>
 
 </asp:Content>
 
