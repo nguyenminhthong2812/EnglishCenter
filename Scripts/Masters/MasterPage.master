@@ -379,9 +379,14 @@
         <!-- main content start-->
         <div id="page-wrapper">
             <div class="main-page">
-                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                <form runat="server">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
         
-                </asp:ContentPlaceHolder>
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </form>
             </div>
         </div>
         <!--footer-->
@@ -424,6 +429,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../../js/bootstrap.js"> </script>
+    
     <%--<script src="../../js/bootstrap.min.js"> </script>--%>
+
+    <!-- javascript tự viết -->
+    <%--<script src="../../js/bootbox.min.js"> </script>--%>
 </body>
 </html>
