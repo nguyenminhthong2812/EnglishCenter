@@ -1,0 +1,20 @@
+﻿body {
+}
+/*.orther-danhsach {
+    margin-top:30px;
+
+}*/
+.orther-title1 {
+        font-weight:400;
+}
+.orther-title2 {
+    margin-bottom:20px;
+}
+.orther-button {
+    height:35px;
+    width:70px;
+    border-radius:5px;
+}
+.orther-button span {
+    font-size:16px;  
+}
