@@ -57,7 +57,7 @@
                     <div class="orther-danhsach">
                         <h4>Danh sách loại học viên:</h4>
                         <dx:ASPxGridView ID="gv_ctv" ClientInstanceName="gv_ctv" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
-                            Theme="Aqua" KeyFieldName="FieldWorker_ID" Width="100%">
+                            Theme="iOS" KeyFieldName="FieldWorker_ID" Width="100%">
                             <%--<TotalSummary>
                             <dx:ASPxSummaryItem FieldName="FieldWorker_ID" SummaryType="count" DisplayFormat="Tổng CTV: {0:0,0}" />
                         </TotalSummary>--%>
