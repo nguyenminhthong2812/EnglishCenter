@@ -14,6 +14,7 @@ namespace qltt.Data
 {
     public class dao_Book:DAO
     {
+        DBHelp db = new DBHelp();
         public dao_Book()
         {
             //
@@ -98,6 +99,14 @@ namespace qltt.Data
             {
 
             }
+        }
+        public string thongbao()
+        {
+            string _Tensach = "";
+            SqlDataReader DR = db.Thucthidulieu("sp_test", CommandType.Text);
+            DR.Read();
+            _Tensach = DR[0].ToString();
+            return _Tensach;
         }
     }
 }

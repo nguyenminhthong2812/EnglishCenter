@@ -34,5 +34,10 @@ namespace qltt.Business
             dao_Book xuly = new dao_Book();
             xuly.Xoasach(sach);
         }
+        public  string thongbao()
+        {
+            dao_Book xuly = new dao_Book();
+            return xuly.thongbao();
+        }
     }
 }
