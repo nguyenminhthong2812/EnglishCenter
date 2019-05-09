@@ -1,11 +1,14 @@
 ﻿body {
 }
-.orther-danhsach {
+/*.orther-danhsach {
     margin-top:30px;
 
+}*/
+.orther-title1 {
+        font-weight:400;
 }
-.orther-danhsach h4 {
-        margin-bottom:20px;
+.orther-title2 {
+    margin-bottom:20px;
 }
 .orther-button {
     height:35px;
