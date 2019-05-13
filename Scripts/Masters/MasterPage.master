@@ -435,6 +435,6 @@
     <%--<script src="../../js/bootstrap.min.js"> </script>--%>
 
     <!-- javascript tự viết -->
-    <script src="../../javascript/confirm.js"> </script>
+    <%--<script src="../../javascript/confirm.js"> </script>--%>
 </body>
 </html>
