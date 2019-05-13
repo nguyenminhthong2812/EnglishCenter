@@ -16,7 +16,7 @@
         }
 
         function Xoa() {
-            
+            Confirm('Go to Google', 'Are you sure you want to visit Google', 'Yes', 'No'); /*change*/
         }
 
         function Huy() {
@@ -54,6 +54,10 @@
             id.fadeIn(1000).removeClass('hide');
             id.fadeOut(2500);
         }
+
+
+        
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">    

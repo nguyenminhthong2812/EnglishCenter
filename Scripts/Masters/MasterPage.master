@@ -27,6 +27,8 @@
     <!-- side nav css file -->
 
     <!-- file css tự tạo -->
+    <link href='../../css/confirm.css' media='all' rel='stylesheet' type='text/css' />
+
     <link href='../../css/orther.css' media='all' rel='stylesheet' type='text/css' />
 
 
@@ -433,6 +435,6 @@
     <%--<script src="../../js/bootstrap.min.js"> </script>--%>
 
     <!-- javascript tự viết -->
-    <%--<script src="../../js/bootbox.min.js"> </script>--%>
+    <script src="../../javascript/confirm.js"> </script>
 </body>
 </html>
