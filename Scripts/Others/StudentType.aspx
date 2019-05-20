@@ -9,7 +9,7 @@
         // Xứ lý các nút
 
         function ThemLoai() {
-            if ($('#tenLoai').val() == '')
+            if (tenLoai.GetValue() == null)
                 ThongBao('Vui lòng nhập tên loại học viên', $('#tbChuY'));
             else
                 gvDanhSachLoaiHV.PerformCallback('LUU');
@@ -25,7 +25,9 @@
             $('#btnXoa').addClass('hide');
             $('#btnHuy').addClass('hide');
 
-            $('.txt-studentType').val('');
+            maLoai.SetValue(null);
+            tenLoai.SetValue(null);
+            ghiChu.SetValue(null);
         }
         // hàm click vào dòng trên danh sách
         function gvDanhSachLoaiHVRowClick(s, e) {
@@ -37,9 +39,9 @@
         }
 
         function GetValue(values) {            
-            $('#maLoai').val(values[0]);
-            $('#tenLoai').val(values[1]);
-            $('#ghiChu').val(values[2]);
+            maLoai.SetValue(values[0]);
+            tenLoai.SetValue(values[1]);
+            ghiChu.SetValue(values[2]);
         }
         
         function gvDanhSachLoaiHVEndCallBack(s, e) {
@@ -101,28 +103,25 @@
                 </div>
                 <div class="form-body row" >                    
                     <div class="form-horizontal col-md-6" data-toggle="validator">
-                        <h4 class="orther-title2">Thông tin loại học viên:</h4>
-                        <div class="form-group hide">
+                        <h4 class="orther-title2">Thông tin loại học viên:</h4>                        
+                        <div class="form-group">
                             <span class="col-sm-2 control-label">Mã loại:</span>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control txt-studentType" id="maLoai">
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="maLoai" CssClass="form-control" ClientInstanceName="maLoai" runat="server" Width="100%"></dx:ASPxTextBox>
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Tên loại:</span>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control txt-studentType" id="tenLoai" required>                                
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="tenLoai" CssClass="form-control" ClientInstanceName="tenLoai" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Ghi chú:</span>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control txt-studentType" id="ghiChu">
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="ghiChu" CssClass="form-control" ClientInstanceName="ghiChu" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
-                        </div>     
-                        <div class="alert alert-success col-sm-11 hide" role="alert" id="tbThanhCong"></div>   
-                        <div class="alert alert-warning col-sm-11 hide" role="alert" id="tbChuY"></div> 
-                        <div class="alert alert-danger col-sm-11 hide" role="alert" id="tbThatBai"></div>                    
+                        </div>                                           
                         <div class="col-sm-offset-2">
                             <input type="button" class="btn btn-success" id="btnThem" onclick="ThemLoai()" value="Thêm"/>  
                             <button class="btn btn-success hide" id="btnSua">Sửa</button>   
@@ -130,7 +129,9 @@
                             <%--<button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>--%>     
                             <input type="button" class="btn btn-warning hide" id="btnHuy" onclick="Huy()" value="Hủy" />                                        
                         </div>
-                        
+                        <div class="alert alert-success col-sm-11 thongbao hide" role="alert" id="tbThanhCong"></div>   
+                        <div class="alert alert-warning col-sm-11 thongbao hide" role="alert" id="tbChuY"></div> 
+                        <div class="alert alert-danger col-sm-11 thongbao hide" role="alert" id="tbThatBai"></div> 
                     </div>
                     <div class="col-md-6">                        
                         <div>

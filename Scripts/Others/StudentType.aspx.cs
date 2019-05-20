@@ -35,6 +35,8 @@ public partial class Scripts_Others_StudentType : System.Web.UI.Page
         if (thaoTac == "LUU")
         {
             gvDanhSachLoaiHV.JSProperties.Add("cpTexts", "THANHCONG");
+            string ma = maLoai.Text;
+            string ten = tenLoai.Text;
         }
     }
 }

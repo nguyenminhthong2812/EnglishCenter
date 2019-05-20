@@ -4,70 +4,140 @@
 
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <form runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    <script type="text/javascript">
+        // Xứ lý các nút
+
+        function ThemLoai() {
+            if (tenLoai.GetValue() == null)
+                ThongBao('Vui lòng nhập tên loại học viên', $('#tbChuY'));
+            else
+                gvDanhSachLoaiHV.PerformCallback('LUU');
+        }
+
+        function Xoa() {
+            Confirm('Go to Google', 'Are you sure you want to visit Google', 'Yes', 'No'); /*change*/
+        }
+
+        function Huy() {
+            $('#btnThem').removeClass('hide');
+            $('#btnSua').addClass('hide');
+            $('#btnXoa').addClass('hide');
+            $('#btnHuy').addClass('hide');
+
+            maLoai.SetValue(null);
+            tenLoai.SetValue(null);
+            ghiChu.SetValue(null);
+        }
+        // hàm click vào dòng trên danh sách
+        function gvDanhSachLoaiHVRowClick(s, e) {
+            $('#btnThem').addClass('hide');
+            $('#btnSua').removeClass('hide');
+            $('#btnXoa').removeClass('hide');
+            $('#btnHuy').removeClass('hide');
+            s.GetRowValues(e.visibleIndex, "id;tenloai;ghichu", GetValue);
+        }
+
+        function GetValue(values) {            
+            maLoai.SetValue(values[0]);
+            tenLoai.SetValue(values[1]);
+            ghiChu.SetValue(values[2]);
+        }
+        
+        function gvDanhSachLoaiHVEndCallBack(s, e) {
+            if (s.cpTexts == 'THANHCONG') {                
+                ThongBao('Đã thêm loại học viên thành công.', $('#tbThanhCong'));
+                delete s.cpTexts;
+            }
+        }
+
+        function ThongBao(mess,id) {            
+            id.text(mess);            
+            id.fadeIn(1000).removeClass('hide');
+            id.fadeOut(2500);
+        }
+
+
+        // Xử lý dialog Confirm
+
+        function Confirm(title, msg, $true, $false) { /*change*/
+            var $content = "<div class='dialog-ovelay'>" +
+                            "<div class='dialog'><header>" +
+                             " <h3> " + title + " </h3> " +
+                             "<i class='fa fa-close'></i>" +
+                         "</header>" +
+                         "<div class='dialog-msg'>" +
+                             " <p> " + msg + " </p> " +
+                         "</div>" +
+                         "<footer>" +
+                             "<div class='controls'>" +
+                                 " <button class='button button-danger doAction'>" + $true + "</button> " +
+                                 " <button class='button button-default cancelAction'>" + $false + "</button> " +
+                             "</div>" +
+                         "</footer>" +
+                      "</div>" +
+                    "</div>";
+            $('body').prepend($content);
+            $('.doAction').click(function () {
+                // do something
+                $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+                    $(this).remove();
+                });
+            });
+            $('.cancelAction, .fa-close').click(function () {
+                $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+                    $(this).remove();
+                });
+            });
+
+        }
+        
+    </script>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">    
+    <div>
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms">
                 <div class="form-title">
                     <h4 class="orther-title1">Quản Lý Loại Học Viên :</h4>
                 </div>
-                <div class="form-body row">                    
-                    <div class="form-horizontal col-md-6">
-                        <h4 class="orther-title2">Thông tin loại học viên:</h4>
+                <div class="form-body row" >                    
+                    <div class="form-horizontal col-md-6" data-toggle="validator">
+                        <h4 class="orther-title2">Thông tin loại học viên:</h4>                        
+                        <div class="form-group">
+                            <span class="col-sm-2 control-label">Mã loại:</span>
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="maLoai" CssClass="form-control" ClientInstanceName="maLoai" runat="server" Width="100%"></dx:ASPxTextBox>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Tên loại:</span>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="tenLoai">
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="tenLoai" CssClass="form-control" ClientInstanceName="tenLoai" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Ghi chú:</span>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="ghiChu">
+                            <div class="col-sm-9">                                
+                                <dx:ASPxTextBox ID="ghiChu" CssClass="form-control" ClientInstanceName="ghiChu" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
-                        </div>
+                        </div>                                           
                         <div class="col-sm-offset-2">
-                            <button class="btn btn-success btn-show" id="btnThem">Thêm</button>  
-                            <button class="btn btn-success btn-hide" id="btnSua">Sửa</button>   
-                            <button class="btn btn-danger btn-hide" id="btnXoa">Xóa</button> 
-                            <button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>                          
+                            <input type="button" class="btn btn-success" id="btnThem" onclick="ThemLoai()" value="Thêm"/>  
+                            <button class="btn btn-success hide" id="btnSua">Sửa</button>   
+                            <input type="button" class="btn btn-danger hide" id="btnXoa" onclick="Xoa()" value="Xóa"/> 
+                            <%--<button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>--%>     
+                            <input type="button" class="btn btn-warning hide" id="btnHuy" onclick="Huy()" value="Hủy" />                                        
                         </div>
-
+                        <div class="alert alert-success col-sm-11 thongbao hide" role="alert" id="tbThanhCong"></div>   
+                        <div class="alert alert-warning col-sm-11 thongbao hide" role="alert" id="tbChuY"></div> 
+                        <div class="alert alert-danger col-sm-11 thongbao hide" role="alert" id="tbThatBai"></div> 
                     </div>
-                    <div class="col-md-6">
-                        <div>
-                            <h4 class="orther-title2">Danh sách loại học viên:</h4>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Loại Học Viên</th>
-                                        <th>Ghi Chú</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col-md-6">                        
                         <div>
                             <h4 class="orther-title2">Danh sách loại học viên:</h4>
                             <dx:ASPxGridView ID="gvDanhSachLoaiHV" ClientInstanceName="gvDanhSachLoaiHV" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
-                                Theme="DevEx" KeyFieldName="id" Width="100%">                                
+                                Theme="DevEx" KeyFieldName="id" Width="100%" OnCustomCallback="gvDanhSachLoaiHV_CustomCallback">                                
                                 <Columns>
                                     <dx:GridViewDataTextColumn Caption="STT" VisibleIndex="1" FieldName="stt">
                                         <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
@@ -91,7 +161,7 @@
                                 <SettingsText EmptyDataRow="Không có loại học viên"></SettingsText>
                                 <SettingsPager Mode="ShowAllRecords" ShowNumericButtons="false" ShowDisabledButtons="false" ShowSeparators="true" Summary-Visible="true"></SettingsPager>
                                 <SettingsBehavior AllowSelectByRowClick="true" AllowFocusedRow="true" />
-                                <%--<ClientSideEvents RowClick="gvDanhSachLoaiHVRowClick" />--%>
+                                <ClientSideEvents RowClick="gvDanhSachLoaiHVRowClick" EndCallback="gvDanhSachLoaiHVEndCallBack" />
                             </dx:ASPxGridView>
                         </div>
                     </div>
@@ -99,6 +169,6 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </asp:Content>
 
