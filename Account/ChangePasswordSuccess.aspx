@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Light.master" CodeFile="ChangePasswordSuccess.aspx.cs" Inherits="ChangePasswordSuccess" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Scripts/Masters/Light.master" CodeFile="ChangePasswordSuccess.aspx.cs" Inherits="ChangePasswordSuccess" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="accountHeader">

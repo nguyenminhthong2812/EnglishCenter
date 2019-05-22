@@ -1,4 +1,4 @@
-<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="MainMaster" %>
+<%@ Master Language="C#" MasterPageFile="~/Scripts/Masters/Root.master" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="MainMaster" %>
 
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
 

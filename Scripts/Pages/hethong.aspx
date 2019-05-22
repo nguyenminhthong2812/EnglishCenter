@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="hethong.aspx.cs" Inherits="hethong" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Scripts/Masters/Main.master" AutoEventWireup="true" CodeFile="hethong.aspx.cs" Inherits="hethong" %>
 
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 

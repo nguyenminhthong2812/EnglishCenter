@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Light.master" CodeFile="RegisterSuccess.aspx.cs" Inherits="RegisterSuccess" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Scripts/Masters/Light.master" CodeFile="RegisterSuccess.aspx.cs" Inherits="RegisterSuccess" %>
 
 <asp:content id="ClientArea" contentplaceholderid="MainContent" runat="server">
     <div class="accountHeader">

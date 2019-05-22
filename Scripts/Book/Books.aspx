@@ -9,14 +9,41 @@
         // Xứ lý các nút
 
         function ThemLoai() {
-            if (tenLoai.GetValue() == null)
-                ThongBao('Vui lòng nhập tên loại học viên', $('#tbChuY'));
+            if (cboChuongtrinh.GetValue() == null)
+                ThongBao('Vui lòng chọn chương trình', $('#tbChuY'));
+            else if (cboCapdo.GetValue() == null)
+                ThongBao('Vui lòng chọn cấp độ', $('#tbChuY'));
+            else if(txtTenSach.GetValue() == null)
+                ThongBao('Vui lòng nhập tên sách', $('#tbChuY'));
+            else if(txtGia.GetValue() == null)
+                ThongBao('Vui lòng nhập giá sách', $('#tbChuY'));
+            else if (txtSoluong.GetValue() == null)
+                ThongBao('Vui lòng nhập số lượng', $('#tbChuY'));
             else
-                gvDanhSachLoaiHV.PerformCallback('LUU');
+                gvDS_sach.PerformCallback('THEMMOI');
         }
-
+        function Sua() {
+            if (cboChuongtrinh.GetValue() == null)
+                ThongBao('Vui lòng chọn chương trình', $('#tbChuY'));
+            else if (cboCapdo.GetValue() == null)
+                ThongBao('Vui lòng chọn cấp độ', $('#tbChuY'));
+            else if (txtTenSach.GetValue() == null)
+                ThongBao('Vui lòng nhập tên sách', $('#tbChuY'));
+            else if (txtGia.GetValue() == null)
+                ThongBao('Vui lòng nhập giá sách', $('#tbChuY'));
+            else if (txtSoluong.GetValue() == null)
+                ThongBao('Vui lòng nhập số lượng', $('#tbChuY'));
+            else
+                gvDS_sach.PerformCallback('CAPNHAT');
+        }
+        function Timkiem() {
+            gvDS_sach.PerformCallback('TIMKIEM');
+        }
         function Xoa() {
-            Confirm('Go to Google', 'Are you sure you want to visit Google', 'Yes', 'No'); /*change*/
+            //if (Confirm('Thông báo', 'Bạn có muốn xóa?', 'Yes', 'No') == 'Yes') {
+            if (confirm('Bạn có muốn xóa?')){
+                gvDS_sach.PerformCallback('XOA');
+            }
         }
 
         function Huy() {
@@ -25,29 +52,54 @@
             $('#btnXoa').addClass('hide');
             $('#btnHuy').addClass('hide');
 
-            maLoai.SetValue(null);
-            tenLoai.SetValue(null);
-            ghiChu.SetValue(null);
+            Clear();
         }
+        function Clear() {
+            cboChuongtrinh.SetValue(null);
+            cboCapdo.SetValue(null);
+            txtMaSach.SetValue(null);
+            txtTenSach.SetValue(null);
+            txtGia.SetValue(null);
+            txtSoluong.SetValue(null);
+        }
+
         // hàm click vào dòng trên danh sách
-        function gvDanhSachLoaiHVRowClick(s, e) {
+        function gvDS_sachRowClick(s, e) {
             $('#btnThem').addClass('hide');
             $('#btnSua').removeClass('hide');
             $('#btnXoa').removeClass('hide');
             $('#btnHuy').removeClass('hide');
-            s.GetRowValues(e.visibleIndex, "id;tenloai;ghichu", GetValue);
+            s.GetRowValues(e.visibleIndex, "Name;Price;Total;BookCode;LevelCode;ProgramCode", GetValue);
         }
 
         function GetValue(values) {            
-            maLoai.SetValue(values[0]);
-            tenLoai.SetValue(values[1]);
-            ghiChu.SetValue(values[2]);
+            txtTenSach.SetValue(values[0]);
+            txtGia.SetValue(values[1]);
+            txtSoluong.SetValue(values[2]);
+            txtMaSach.SetValue(values[3]);
+            cboCapdo.SetValue(values[4]);
+            cboChuongtrinh.SetValue(values[5]);
         }
         
-        function gvDanhSachLoaiHVEndCallBack(s, e) {
-            if (s.cpTexts == 'THANHCONG') {                
-                ThongBao('Đã thêm loại học viên thành công.', $('#tbThanhCong'));
+        function gvDS_sachEndCallBack(s, e) {
+            if (s.cpTexts == 'THEMTHANHCONG') {
+                ThongBao('Đã thêm thành công.', $('#tbThanhCong'));
                 delete s.cpTexts;
+                Huy();
+                gvDS_sach.PerformCallback('TIMKIEM');
+
+            }
+            else if (s.cpTexts == 'SUATHANHCONG') {
+                ThongBao('Đã cập nhật thành công.', $('#tbThanhCong'));
+                delete s.cpTexts;
+                Huy();
+                gvDS_sach.PerformCallback('TIMKIEM');
+            }
+            else if (s.cpTexts == 'XOATHANHCONG') {
+                ThongBao('Đã xóa thành công.', $('#tbThanhCong'));
+                delete s.cpTexts;
+                Huy();
+                gvDS_sach.PerformCallback('TIMKIEM');
             }
         }
 
@@ -91,11 +143,6 @@
             });
 
         }
-        
-    </script>
-</asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server"> 
-    <script type="text/javascript">
         var lastCapdo = null;
         function OnChanged_Capdo(cboChuongtrinh) {
             if (cboCapdo.InCallback()) {
@@ -111,7 +158,11 @@
                 lastCapdo = null;
             }
         }
+        
     </script>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server"> 
+    
     <div>
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms">
@@ -142,30 +193,32 @@
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Mã sách:</span>
                             <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="maLoai" CssClass="form-control" ClientInstanceName="maLoai" runat="server" Width="100%"></dx:ASPxTextBox>
+                                <dx:ASPxTextBox ID="txtMaSach" CssClass="form-control" ClientInstanceName="txtMaSach" runat="server" Width="100%"></dx:ASPxTextBox>
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Tên sách:</span>
                             <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="tenLoai" CssClass="form-control" ClientInstanceName="tenLoai" runat="server" Width="100%"></dx:ASPxTextBox>                              
+                                <dx:ASPxTextBox ID="txtTenSach" CssClass="form-control" ClientInstanceName="txtTenSach" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Giá sách:</span>
                             <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="ghiChu" CssClass="form-control" ClientInstanceName="ghiChu" runat="server" Width="100%"></dx:ASPxTextBox>                              
+                                <dx:ASPxTextBox ID="txtGia" CssClass="form-control" ClientInstanceName="txtGia" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
                         </div>  
                         <div class="form-group">
                             <span class="col-sm-2 control-label">Số lượng:</span>
                             <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="ASPxTextBox1" CssClass="form-control" ClientInstanceName="ghiChu" runat="server" Width="100%"></dx:ASPxTextBox>                              
+                                <dx:ASPxTextBox ID="txtSoluong" CssClass="form-control" ClientInstanceName="txtSoluong" runat="server" Width="100%"></dx:ASPxTextBox>                              
                             </div>
                         </div>                                           
                         <div class="col-sm-offset-2">
+                            <input type="button" class="btn btn-info" id="btnTim" onclick="Timkiem()" value="Tìm kiếm"/> 
                             <input type="button" class="btn btn-success" id="btnThem" onclick="ThemLoai()" value="Thêm"/>  
-                            <button class="btn btn-success hide" id="btnSua">Sửa</button>   
+                            <input type="button" class="btn btn-success hide" id="btnSua" onclick="Sua()" value="Sửa"/>  
+                            <%--<button class="btn btn-success hide" id="btnSua">Sửa</button>--%>   
                             <input type="button" class="btn btn-danger hide" id="btnXoa" onclick="Xoa()" value="Xóa"/> 
                             <%--<button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>--%>     
                             <input type="button" class="btn btn-warning hide" id="btnHuy" onclick="Huy()" value="Hủy" />                                        
@@ -177,32 +230,41 @@
                     <div class="col-md-6">                        
                         <div>
                             <h4 class="orther-title2">Danh sách:</h4>
-                            <dx:ASPxGridView ID="gvDanhSachLoaiHV" ClientInstanceName="gvDanhSachLoaiHV" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
-                                Theme="DevEx" KeyFieldName="id" Width="100%" OnCustomCallback="gvDanhSachLoaiHV_CustomCallback">                                
+                            <dx:ASPxGridView ID="gvDS_sach" ClientInstanceName="gvDS_sach" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
+                                Theme="DevEx" KeyFieldName="BookCode" Width="100%" OnCustomCallback="gvDS_sach_CustomCallback">                                
                                 <Columns>
-                                    <dx:GridViewDataTextColumn Caption="STT" VisibleIndex="1" FieldName="stt">
+                                    <dx:GridViewDataTextColumn Caption="STT" VisibleIndex="1" FieldName="Stt">
                                         <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
                                         <CellStyle Font-Size="14px" HorizontalAlign="Left">
                                         </CellStyle>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn Caption="Loại Học Viên" VisibleIndex="2" FieldName="tenloai">
+                                    <dx:GridViewDataTextColumn Caption="Tên sách" VisibleIndex="2" FieldName="Name">
                                         <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
                                         <CellStyle Font-Size="Medium" HorizontalAlign="Left">
                                         </CellStyle>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" VisibleIndex="3" FieldName="ghichu">
+                                    <dx:GridViewDataTextColumn Caption="Giá" VisibleIndex="3" FieldName="Price">
                                         <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
                                         <CellStyle Font-Size="Small" HorizontalAlign="Left">
                                         </CellStyle>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="id" Visible="false">
+                                     <dx:GridViewDataTextColumn Caption="Số lượng" VisibleIndex="4" FieldName="Total">
+                                        <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
+                                        <CellStyle Font-Size="Small" HorizontalAlign="Left">
+                                        </CellStyle>
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="BookCode" Visible="false">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="LevelCode" Visible="false">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="ProgramCode" Visible="false">
                                     </dx:GridViewDataTextColumn>
                                 </Columns>
                                 <Settings ShowFooter="True" ShowFilterRow="false" ShowFilterBar="Hidden" />
-                                <SettingsText EmptyDataRow="Không có loại học viên"></SettingsText>
+                                <SettingsText EmptyDataRow="Không có dữ liệu"></SettingsText>
                                 <SettingsPager Mode="ShowAllRecords" ShowNumericButtons="false" ShowDisabledButtons="false" ShowSeparators="true" Summary-Visible="true"></SettingsPager>
                                 <SettingsBehavior AllowSelectByRowClick="true" AllowFocusedRow="true" />
-                                <ClientSideEvents RowClick="gvDanhSachLoaiHVRowClick" EndCallback="gvDanhSachLoaiHVEndCallBack" />
+                                <ClientSideEvents RowClick="gvDS_sachRowClick" EndCallback="gvDS_sachEndCallBack" />
                             </dx:ASPxGridView>
                         </div>
                     </div>

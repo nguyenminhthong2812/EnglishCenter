@@ -2,6 +2,7 @@
 using qltt.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 //using System.Linq;
 using System.Web;
 
@@ -38,6 +39,21 @@ namespace qltt.Business
         {
             dao_Book xuly = new dao_Book();
             return xuly.thongbao();
+        }
+        public int t_Books_Ins(int Loai, string BookCode, string Name, string LevelCode, double Price, int Total)
+        {
+            dao_Book xuly = new dao_Book();
+            return xuly.t_Books_Ins(Loai,BookCode,Name,LevelCode,Price,Total);
+        }
+        public DataSet t_Books_Lst(string LevelCode, string Name, string BookCode, double Price, int Total)
+        {
+            dao_Book xuly = new dao_Book();
+            return xuly.t_Books_Lst(LevelCode,Name,BookCode,Price,Total);
+        }
+        public int t_Books_Del(string BookCode)
+        {
+            dao_Book xuly = new dao_Book();
+            return xuly.t_Books_Del(BookCode);
         }
     }
 }

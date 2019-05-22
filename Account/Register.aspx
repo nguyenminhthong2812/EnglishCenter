@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Light.master" CodeFile="Register.aspx.cs" Inherits="Register" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Scripts/Masters/Light.master" CodeFile="Register.aspx.cs" Inherits="Register" %>
 
 <%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 

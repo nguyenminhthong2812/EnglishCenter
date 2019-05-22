@@ -108,5 +108,84 @@ namespace qltt.Data
             _Tensach = DR[0].ToString();
             return _Tensach;
         }
+        public int t_Books_Ins(int Loai,string BookCode, string Name, string LevelCode, double Price, int Total)
+        {
+            int kq = 0;
+            SqlConnection cn = Ketnoi();
+            SqlCommand cmd = new SqlCommand("t_Books_Ins", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@Loai", Loai));
+            cmd.Parameters.Add(new SqlParameter("@BookCode", BookCode));
+            cmd.Parameters.Add(new SqlParameter("@Name", Name));
+            cmd.Parameters.Add(new SqlParameter("@LevelCode", LevelCode));
+            cmd.Parameters.Add(new SqlParameter("@Price", Price));
+            cmd.Parameters.Add(new SqlParameter("@Total", Total));
+            SqlParameter outPutParameter = new SqlParameter();
+            outPutParameter.ParameterName = "@tt";
+            outPutParameter.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter.Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(outPutParameter);
+            //cmd.Parameters.Add("@tt", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cn.Open();
+            SqlDataReader rd = cmd.ExecuteReader();
+            try
+            {
+                rd.Read();
+                kq = Convert.ToInt32(outPutParameter.Value.ToString());
+            }
+            catch { }
+            
+            cn.Close();
+            return kq;
+        }
+        public DataSet t_Books_Lst(string LevelCode, string Name,string BookCode , double Price, int Total)
+        {
+            SqlConnection cn = Ketnoi();
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand("t_Books_Lst", cn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@LevelCode", LevelCode));
+            cmd.Parameters.Add(new SqlParameter("@Name", Name));
+            cmd.Parameters.Add(new SqlParameter("@BookCode", BookCode));
+            cmd.Parameters.Add(new SqlParameter("@Price", Price));
+            cmd.Parameters.Add(new SqlParameter("@Total", Total));
+            da.SelectCommand = cmd;
+
+            DataSet ds = new DataSet();
+            try
+            {
+                cn.Open();
+                da.Fill(ds);
+                cn.Close();
+            }
+            catch { }
+            return ds;
+        }
+        public int t_Books_Del(string BookCode)
+        {
+            int kq = 0;
+            SqlConnection cn = Ketnoi();
+            SqlCommand cmd = new SqlCommand("t_Books_Del", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@BookCode", BookCode));
+
+            SqlParameter outPutParameter = new SqlParameter();
+            outPutParameter.ParameterName = "@tt";
+            outPutParameter.SqlDbType = System.Data.SqlDbType.Int;
+            outPutParameter.Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(outPutParameter);
+            cn.Open();
+            SqlDataReader rd = cmd.ExecuteReader();
+            try
+            {
+                rd.Read();
+                kq = Convert.ToInt32(outPutParameter.Value.ToString());
+            }
+            catch { }
+            cn.Close();
+            return kq;
+        }
+
     }
 }
