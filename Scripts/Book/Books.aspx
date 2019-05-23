@@ -165,109 +165,142 @@
     
     <div>
         <div class=" form-grids row form-grids-right">
-            <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-two widget-shadow " data-example-id="basic-forms">
                 <div class="form-title">
                     <h4 class="orther-title1">Quản Lý sách :</h4>
                 </div>
-                <div class="form-body row" >                    
-                    <div class="form-horizontal col-md-6" data-toggle="validator">
-                        <h4 class="orther-title2">Thông tin sách:</h4>  
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Chương trình:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxComboBox ID="cboChuongtrinh" runat="server" ValueType="System.String" ClientInstanceName="cboChuongtrinh"
-                                    IncrementalFilteringMode="Contains" IncrementalFilteringDelay="500" Theme="Aqua">
-                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { OnChanged_Capdo(s); }" />
-                                </dx:ASPxComboBox>
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Cấp độ:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxComboBox ID="cboCapdo" runat="server" ValueType="System.String" ClientInstanceName="cboCapdo"
-                                    IncrementalFilteringMode="Contains" IncrementalFilteringDelay="500" Theme="Aqua" OnCallback="cboCapdo_Callback">
-                                    <ClientSideEvents EndCallback=" OnEndCallback_capdo" />
-                                </dx:ASPxComboBox>
-                            </div>
-                        </div>                      
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Mã sách:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="txtMaSach" CssClass="form-control" ClientInstanceName="txtMaSach" runat="server" Width="100%"></dx:ASPxTextBox>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Tên sách:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="txtTenSach" CssClass="form-control" ClientInstanceName="txtTenSach" runat="server" Width="100%"></dx:ASPxTextBox>                              
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Giá sách:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="txtGia" CssClass="form-control" ClientInstanceName="txtGia" runat="server" Width="100%"></dx:ASPxTextBox>                              
-                            </div>
-                        </div>  
-                        <div class="form-group">
-                            <span class="col-sm-2 control-label">Số lượng:</span>
-                            <div class="col-sm-9">                                
-                                <dx:ASPxTextBox ID="txtSoluong" CssClass="form-control" ClientInstanceName="txtSoluong" runat="server" Width="100%"></dx:ASPxTextBox>                              
-                            </div>
-                        </div>                                           
-                        <div class="col-sm-offset-2">
-                            <input type="button" class="btn btn-info" id="btnTim" onclick="Timkiem()" value="Tìm kiếm"/> 
-                            <input type="button" class="btn btn-success" id="btnThem" onclick="ThemLoai()" value="Thêm"/>  
-                            <input type="button" class="btn btn-success hide" id="btnSua" onclick="Sua()" value="Sửa"/>  
-                            <%--<button class="btn btn-success hide" id="btnSua">Sửa</button>--%>   
-                            <input type="button" class="btn btn-danger hide" id="btnXoa" onclick="Xoa()" value="Xóa"/> 
-                            <%--<button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>--%>     
-                            <input type="button" class="btn btn-warning hide" id="btnHuy" onclick="Huy()" value="Hủy" />                                        
-                        </div>
-                        <div class="alert alert-success col-sm-11 thongbao hide" role="alert" id="tbThanhCong"></div>   
-                        <div class="alert alert-warning col-sm-11 thongbao hide" role="alert" id="tbChuY"></div> 
-                        <div class="alert alert-danger col-sm-11 thongbao hide" role="alert" id="tbThatBai"></div> 
+                <div class="form-body" data-example-id="simple-form-inline">                    
+                    <%--<div class="form-horizontal col-md-6" data-toggle="validator">--%>
+                    <div class="form-inline" style="text-align:center">
+                        <table style="width:80%;text-align:center">
+                            <tr>
+                                <td colspan="4">
+                                    <h4 class="orther-title2">Thông tin sách:</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Chương trình:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxComboBox ID="cboChuongtrinh" runat="server" ValueType="System.String" ClientInstanceName="cboChuongtrinh"
+                                        IncrementalFilteringMode="Contains" IncrementalFilteringDelay="500" Theme="Aqua">
+                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { OnChanged_Capdo(s); }" />
+                                    </dx:ASPxComboBox>
+                                </td>
+                                <td>
+                                    <span>Cấp độ:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxComboBox ID="cboCapdo" runat="server" ValueType="System.String" ClientInstanceName="cboCapdo"
+                                        IncrementalFilteringMode="Contains" IncrementalFilteringDelay="500" Theme="Aqua" OnCallback="cboCapdo_Callback">
+                                        <ClientSideEvents EndCallback=" OnEndCallback_capdo" />
+                                    </dx:ASPxComboBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Mã sách:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxTextBox ID="txtMaSach"  ClientInstanceName="txtMaSach" runat="server" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+                                </td>
+                                <td>
+                                    <span>Tên sách:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxTextBox ID="txtTenSach" ClientInstanceName="txtTenSach" runat="server" Width="100%"></dx:ASPxTextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>Giá sách:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxTextBox ID="txtGia" ClientInstanceName="txtGia" runat="server" Width="100%"></dx:ASPxTextBox>  
+                                </td>
+                                <td>
+                                    <span>Số lượng:</span>
+                                </td>
+                                <td>
+                                    <dx:ASPxTextBox ID="txtSoluong"  ClientInstanceName="txtSoluong" runat="server" Width="100%" NullText="Nhập số lượng" ></dx:ASPxTextBox> 
+                                </td>
+                            </tr>  
+                            <tr>
+                                <td colspan="4"><br /></td>
+                            </tr>        
+                            <tr>
+                                <td colspan="4" style="text-align:center">
+                                     <div class="col-sm-offset-2">
+                                        <input type="button" class="btn btn-info" id="btnTim" onclick="Timkiem()" value="Tìm kiếm"/> 
+                                        <input type="button" class="btn btn-success" id="btnThem" onclick="ThemLoai()" value="Thêm"/>  
+                                        <input type="button" class="btn btn-success hide" id="btnSua" onclick="Sua()" value="Sửa"/>  
+                                        <%--<button class="btn btn-success hide" id="btnSua">Sửa</button>--%>   
+                                        <input type="button" class="btn btn-danger hide" id="btnXoa" onclick="Xoa()" value="Xóa"/> 
+                                        <%--<button class="btn btn-warning btn-hide" id="btnHuy">Hủy</button>--%>     
+                                        <input type="button" class="btn btn-warning hide" id="btnHuy" onclick="Huy()" value="Hủy" />                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="4" style="flex-align:center">
+                                    <div class="alert alert-success col-sm-11 thongbao hide" role="alert" id="tbThanhCong"></div>   
+                                    <div class="alert alert-warning col-sm-11 thongbao hide" role="alert" id="tbChuY"></div> 
+                                    <div class="alert alert-danger col-sm-11 thongbao hide" role="alert" id="tbThatBai"></div> 
+                                </td>
+                            </tr>                                   
+                            <tr>
+                                <td colspan="4" style="text-align:center">
+                                     <div>
+                                        <br />
+                                        <h4 class="orther-title2">Danh sách:</h4>
+                                        <dx:ASPxGridView ID="gvDS_sach" ClientInstanceName="gvDS_sach" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
+                                            Theme="DevEx" KeyFieldName="BookCode" Width="100%" OnCustomCallback="gvDS_sach_CustomCallback">                                
+                                            <Columns>
+                                                <dx:GridViewDataTextColumn Caption="STT" VisibleIndex="1" FieldName="Stt">
+                                                    <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
+                                                    <CellStyle Font-Size="14px" HorizontalAlign="Left">
+                                                    </CellStyle>
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataTextColumn Caption="Tên sách" VisibleIndex="2" FieldName="Name">
+                                                    <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
+                                                    <CellStyle Font-Size="Medium" HorizontalAlign="Left">
+                                                    </CellStyle>
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataTextColumn Caption="Giá" VisibleIndex="3" FieldName="Price">
+                                                    <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
+                                                    <CellStyle Font-Size="Small" HorizontalAlign="Left">
+                                                    </CellStyle>
+                                                </dx:GridViewDataTextColumn>
+                                                 <dx:GridViewDataTextColumn Caption="Số lượng" VisibleIndex="4" FieldName="Total">
+                                                    <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
+                                                    <CellStyle Font-Size="Small" HorizontalAlign="Left">
+                                                    </CellStyle>
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataTextColumn FieldName="BookCode" Visible="false">
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataTextColumn FieldName="LevelCode" Visible="false">
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataTextColumn FieldName="ProgramCode" Visible="false">
+                                                </dx:GridViewDataTextColumn>
+                                            </Columns>
+                                            <Settings ShowFooter="True" ShowFilterRow="false" ShowFilterBar="Hidden" />
+                                            <SettingsText EmptyDataRow="Không có dữ liệu"></SettingsText>
+                                            <SettingsPager Mode="ShowAllRecords" ShowNumericButtons="false" ShowDisabledButtons="false" ShowSeparators="true" Summary-Visible="true"></SettingsPager>
+                                            <SettingsBehavior AllowSelectByRowClick="true" AllowFocusedRow="true" />
+                                            <ClientSideEvents RowClick="gvDS_sachRowClick" EndCallback="gvDS_sachEndCallBack" />
+                                        </dx:ASPxGridView>
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                                            
+                       
+                        </table>
+                    <%--</div>--%>
                     </div>
-                    <div class="col-md-6">                        
-                        <div>
-                            <h4 class="orther-title2">Danh sách:</h4>
-                            <dx:ASPxGridView ID="gvDS_sach" ClientInstanceName="gvDS_sach" runat="server" AutoGenerateColumns="false" UseSubmitBehavior="false"
-                                Theme="DevEx" KeyFieldName="BookCode" Width="100%" OnCustomCallback="gvDS_sach_CustomCallback">                                
-                                <Columns>
-                                    <dx:GridViewDataTextColumn Caption="STT" VisibleIndex="1" FieldName="Stt">
-                                        <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
-                                        <CellStyle Font-Size="14px" HorizontalAlign="Left">
-                                        </CellStyle>
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn Caption="Tên sách" VisibleIndex="2" FieldName="Name">
-                                        <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
-                                        <CellStyle Font-Size="Medium" HorizontalAlign="Left">
-                                        </CellStyle>
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn Caption="Giá" VisibleIndex="3" FieldName="Price">
-                                        <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
-                                        <CellStyle Font-Size="Small" HorizontalAlign="Left">
-                                        </CellStyle>
-                                    </dx:GridViewDataTextColumn>
-                                     <dx:GridViewDataTextColumn Caption="Số lượng" VisibleIndex="4" FieldName="Total">
-                                        <HeaderStyle Font-Size="Medium" HorizontalAlign="Center" />
-                                        <CellStyle Font-Size="Small" HorizontalAlign="Left">
-                                        </CellStyle>
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="BookCode" Visible="false">
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="LevelCode" Visible="false">
-                                    </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="ProgramCode" Visible="false">
-                                    </dx:GridViewDataTextColumn>
-                                </Columns>
-                                <Settings ShowFooter="True" ShowFilterRow="false" ShowFilterBar="Hidden" />
-                                <SettingsText EmptyDataRow="Không có dữ liệu"></SettingsText>
-                                <SettingsPager Mode="ShowAllRecords" ShowNumericButtons="false" ShowDisabledButtons="false" ShowSeparators="true" Summary-Visible="true"></SettingsPager>
-                                <SettingsBehavior AllowSelectByRowClick="true" AllowFocusedRow="true" />
-                                <ClientSideEvents RowClick="gvDS_sachRowClick" EndCallback="gvDS_sachEndCallBack" />
-                            </dx:ASPxGridView>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>

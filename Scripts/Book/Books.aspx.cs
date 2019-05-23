@@ -114,6 +114,8 @@ public partial class Scripts_Book_Books : System.Web.UI.Page
         int Total = Convert.ToInt32(txtSoluong.Text == "" ? "-1" : txtSoluong.Text.ToString());
         DataTable dt = new DataTable();
         dt = bus_b.t_Books_Lst(LevelCode, Name, BookCode, Price, Total).Tables[0];
+        gvDS_sach.DataSource = null;
+        gvDS_sach.DataBind();
         if (dt.Rows.Count > 0)
         {
             gvDS_sach.DataSource = dt;
